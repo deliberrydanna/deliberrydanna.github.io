@@ -7,7 +7,10 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="descarga (1).jpeg" />
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">+
+  
+ 
+
 <body class="text-gray-800">
 
   <header class="hero-bg text-white text-center py-16">
@@ -36,14 +39,15 @@
 </headeR>
 
   <main class="container mx-auto px-4 py-12">
-    <section class="text-center mb-10">
-      <h2 class="text-3xl font-bold mb-6 gold-text">Nuestro Menú</h2>
-      <div class="flex flex-wrap justify-center gap-4">
-        <button class="bg-red-500 text-white px-6 py-2 rounded-full hover-gold hover:scale-105 transition">Crea tus fresas</button>
-        <button class="bg-red-500 text-white px-6 py-2 rounded-full hover-gold hover:scale-105 transition">Especiales</button>
-        <button class="bg-red-500 text-white px-6 py-2 rounded-full hover-gold hover:scale-105 transition">Combos</button>
-      </div>
-    </section>
+   <section class="text-center mb-10">
+  <h2 class="text-3xl font-bold mb-6 gold-text">Nuestro Menú</h2>
+  <div class="flex flex-wrap justify-center gap-4">
+    <a href="personaliza.html" class="bg-red-400 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-full shadow-md transition">🍓 Crea tus fresas</a>
+    <a href="especialess.html" class="bg-red-400 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-full shadow-md transition">✨ Especiales</a>
+    <a href="combos.html" class="bg-red-400 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-full shadow-md transition">🎁 Ver Combos</a>
+  </div>
+</section>
+
 
     <section class="bg-white p-8 rounded-xl shadow-elegant gold-border max-w-4xl mx-auto">
       <h2 class="text-2xl font-bold mb-6 text-center">📝 Personaliza tu Pedido</h2>
@@ -138,6 +142,9 @@
           `).join('')}
         </div>
       </div>
+      <button onclick="agregarAlCarrito('Combo Amor - $15.000')" class="bg-green-500 hover:bg-green-600 text-white mt-4 py-2 px-6 rounded-full shadow">
+  Agregar al pedido 🛒
+</button>
 
       <button onclick="this.parentElement.remove()" class="text-red-500 text-sm underline mt-2">Eliminar este postre</button>
     `;
@@ -175,6 +182,64 @@
     window.open(url, '_blank');
   }
 </script>
+<script>
+  function agregarAlCarrito(producto) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.push(producto);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    alert("Producto agregado al pedido 🍓");
+  }
+
+  function enviarPedido() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    if (carrito.length === 0) {
+      alert("Tu pedido está vacío");
+      return;
+    }
+    const mensaje = `Hola 👋, quiero hacer el siguiente pedido:\n\n${carrito.join('\n')}`;
+    const numero = '573144855583';
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+  }
+  // Al final de enviarPedido():
+const historial = JSON.parse(localStorage.getItem('historialPedidos')) || [];
+historial.push(mensaje);  // 'mensaje' es el texto que vas a enviar por WhatsApp
+localStorage.setItem('historialPedidos', JSON.stringify(historial));
+
+</script>
+<script>
+  function enviarPedidoPorWhatsApp() {
+    const nombre = document.getElementById("nombre").value;
+    const direccion = document.getElementById("direccion").value;
+    const size = document.querySelector('input[name="size"]:checked')?.value;
+    const cream = document.querySelector('input[name="cream"]:checked')?.value;
+    const toppings = Array.from(document.querySelectorAll('input[name="toppings"]:checked')).map(t => t.value).join(", ") || "Ninguno";
+    const payment = document.querySelector('input[name="payment"]:checked')?.value;
+
+    const personalizado = `🍓 Pedido Personalizado:
+🧍 Nombre: ${nombre}
+📍 Dirección: ${direccion}
+🥤 Tamaño: ${size}
+🍦 Crema: ${cream}
+✨ Toppings: ${toppings}
+💳 Pago: ${payment}`;
+
+    // Guardamos el pedido personalizado junto al carrito general
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.push(personalizado);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Enviar todo por WhatsApp
+    const mensaje = `Hola 👋, quiero hacer el siguiente pedido:\n\n${carrito.join('\n\n')}`;
+    const numero = '573144855583';
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+
+    // Limpia el carrito si quieres que se borre después del envío
+    // localStorage.removeItem('carrito');
+  }
+</script>
+
+
 
 </body>
 </html>
+
