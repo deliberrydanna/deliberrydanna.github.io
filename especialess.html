@@ -3,37 +3,163 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Combos</title>
-  <link rel="stylesheet" href="styes.css3" />
+  <title>Especiales - Deliberry</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Raleway', sans-serif;
+    }
+    .hover-zoom {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-zoom:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(255, 0, 98, 0.2);
+    }
+  </style>
 </head>
-<body>
-  <main class="page-container">
-    <h1 class="page-title">🍓 Combos 🍓</h1>
-    
-    <div class="cards-container">
-      <div class="product-card">
-        <img src="combo1.jpg" alt="Combo 1" />
-        <h2>Combo Amor</h2>
-        <p>6 fresas + globo corazón + tarjeta personalizada.</p>
-        <span class="price">$15.000</span>
+<body class="bg-pink-50 text-gray-800">
+  <header class="bg-pink-200 py-8 text-center shadow-md">
+    <h1 class="text-4xl font-bold text-pink-700">Especiales Bluberry 🍓</h1>
+    <p class="text-lg text-gray-700 mt-2">¡Disfruta de nuestros especiales para compartir!</p>
+  </header></div>
+  <div class="text-center mt-10">
+  <a href="index.html" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition">
+    ⬅️ Volver al inicio
+  </a>
+</div>
+
+        <div class="text-center mt-6">
+      <button onclick="verPedido()" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-2 px-6 rounded-full shadow">
+        Ver pedido actual 🧾
+      </button>
+    </div>
+
+  <main class="container mx-auto px-4 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Especiales (ejemplo con carrito) -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition hover:shadow-xl">
+        <img src="especiales 1.jpg" alt="Especial Brownie Vainilla" class="w-full h-64 object-contain rounded-lg mb-4 hover-zoom">
+        <h2 class="text-pink-600 font-bold text-xl">Especial Brownie Vainilla 💕</h2>
+        <div class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full mt-4 text-sm shadow">
+          El más indulgente y cremoso de todos 😍
+        </div>
+        <p class="text-sm text-gray-600 mt-2">
+          Fresas con cremas (16 onz) + cubos de brownie + chips de chocolate semiamargo + helado de vainilla 🍦
+        </p>
+        <p class="text-pink-700 font-bold mt-2 text-lg">$20.000</p>
+        <button onclick="agregarAlCarrito('Especial Brownie Vainilla 💕 - $20.000')"
+           class="bg-green-500 hover:bg-green-600 text-white mt-4 py-2 px-6 rounded-full inline-block shadow transition">
+          Agregar al pedido 🛒
+        </button>
       </div>
+
+      <!-- Especial 2 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition hover:shadow-xl">
+        <img src="especial2.jpg" alt="Especial ChocoOreo" class="w-full h-64 object-contain rounded-lg mb-4 hover-zoom">
+        <h2 class="text-pink-600 font-bold text-xl">Especial ChocoOreo 🎉</h2>
+        <div class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full mt-4 text-sm shadow">
+          Un mix de sabores intensos y textura brutal
+        </div>
+        <p class="text-sm text-gray-600 mt-2">
+          Fresas con cremas (14 onz) + salsa de chocolate + oreo triturada + maní picado + barquillos crujientes 🍫
+        </p>
+        <p class="text-pink-700 font-bold mt-2 text-lg">$17.500</p>
+        <button onclick="agregarAlCarrito('Especial ChocoOreo 🎉 - $17.500')"
+           class="bg-green-500 hover:bg-green-600 text-white mt-4 py-2 px-6 rounded-full inline-block shadow transition">
+          Agregar al pedido 🛒
+        </button>
+      </div>
+
+      <!-- Especial 3 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition hover:shadow-xl">
+        <img src="especial 2 .jpg" alt="Especial ChocoManí" class="w-full h-64 object-contain rounded-lg mb-4 hover-zoom">
+        <h2 class="text-pink-600 font-bold text-xl">Especial ChocoManí 🎊</h2>
+        <div class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full mt-4 text-sm shadow">
+          Un clásico irresistible con un toque crujiente 🤎
+        </div>
+        <p class="text-sm text-gray-600 mt-2">
+          Fresas con cremas (16 onz) + brownie en cubos + chips de chocolate + salsa de chocolate + maní picado 🥜
+        </p>
+        <p class="text-pink-700 font-bold mt-2 text-lg">$18.500</p>
+        <button onclick="agregarAlCarrito('Especial ChocoManí 🎊 - $18.500')"
+           class="bg-green-500 hover:bg-green-600 text-white mt-4 py-2 px-6 rounded-full inline-block shadow transition">
+          Agregar al pedido 🛒
+        </button>
+      </div>
+
+      <!-- Especial 4 -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition hover:shadow-xl">
+        <img src="espacial 4.jpg" alt="Especial Mini Donas" class="w-full h-64 object-contain rounded-lg mb-4 hover-zoom">
+        <h2 class="text-pink-600 font-bold text-xl">Especial Mini Donas 🍩</h2>
+        <div class="bg-yellow-100 text-yellow-800 px-4 py-1 rounded-full mt-4 text-sm shadow">
+          Dulce, colorido y perfecto para antojos únicos 🍭
+        </div>
+        <p class="text-sm text-gray-600 mt-2">
+          Fresas con crema (16 onz) + mini donas + lluvia de colores + m&m + topping de caramelo 🧁
+        </p>
+        <p class="text-pink-700 font-bold mt-2 text-lg">$21.000</p>
+        <button onclick="agregarAlCarrito('Especial Mini Donas 🍩 - $21.000')"
+           class="bg-green-500 hover:bg-green-600 text-white mt-4 py-2 px-6 rounded-full inline-block shadow transition">
+          Agregar al pedido 🛒
+        </button>
       
-      <div class="product-card">
-        <img src="combo2.jpg" alt="Combo 2" />
-        <h2>Combo Sorpresa</h2>
-        <p>8 fresas decoradas + caja temática + moño grande.</p>
-        <span class="price">$18.500</span>
-      </div>
 
-      <div class="product-card">
-        <img src="combo3.jpg" alt="Combo 3" />
-        <h2>Combo Cumple</h2>
-        <p>12 fresas + vela de cumpleaños + mensaje sorpresa.</p>
-        <span class="price">$22.000</span>
-      </div>
 
-      <!-- Agrega más combos si necesitas -->
+      <!-- Repite este bloque para otros especiales con diferente texto -->
+
+    </div>
+
+    <!-- Botón para ver pedido y enviar por WhatsApp -->
+    <div class="text-center mt-10">
+      <button onclick="enviarPedido()"
+        class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">
+        Enviar pedido por WhatsApp 📲
+      </button>
     </div>
   </main>
+
+  <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+    <p>© 2025 Deliberry. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function agregarAlCarrito(producto) {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      carrito.push(producto);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      alert("Producto agregado al pedido 🍓");
+    }
+
+    function verPedido() {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      if (carrito.length === 0) {
+        alert("Tu pedido está vacío 🛒");
+      } else {
+        alert("🧾 Tu pedido actual:\n\n" + carrito.join('\n'));
+      }
+    }
+
+    function enviarPedido() {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      if (carrito.length === 0) {
+        alert("Tu pedido está vacío");
+        return;
+      }
+      const mensaje = `Hola 👋, quiero hacer el siguiente pedido:\n\n${carrito.join('\n')}`;
+      const numero = '573144855583';
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+      localStorage.removeItem('carrito');
+    }
+    // Al final de enviarPedido():
+const historial = JSON.parse(localStorage.getItem('historialPedidos')) || [];
+historial.push(mensaje);  // 'mensaje' es el texto que vas a enviar por WhatsApp
+localStorage.setItem('historialPedidos', JSON.stringify(historial));
+
+  </script>
 </body>
 </html>
+

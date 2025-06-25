@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Combos - Deliberry</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Raleway', sans-serif; }
+    .hover-zoom { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-zoom:hover { transform: scale(1.1); box-shadow: 0 10px 20px rgba(255,0,98,0.2); }
+  </style>
+</head>
+<body class="bg-pink-50 text-gray-800">
+  <header class="bg-pink-200 py-8 text-center shadow-md">
+    <h1 class="text-4xl font-bold text-pink-700">Combos Deliberry 🎁</h1>
+    <p class="text-lg text-gray-700 mt-2">Elige y combina tus favoritos en un solo pedido</p>
+ <div class="text-center mt-10">
+  <a href="index.html" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition">
+    ⬅️ Volver al inicio
+  </a>
+</div>
+
+</header>
+
+
+  <main class="container mx-auto px-4 py-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Combo Amor Doble -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition hover:shadow-xl">
+        <img src="combo 1 .jpg" alt="Combo Amor Doble" class="w-full h-64 object-contain rounded-lg mb-4 hover-zoom">
+        <h2 class="text-pink-600 font-bold text-xl">Combo Dulce Enredo💕</h2>
+        <p class="text-sm text-gray-600 mt-2">Dos fresas medianas + dos cremas + chispas de chocolate blanco + fresa picada</p>
+        <p class="text-pink-700 font-bold mt-2 text-lg">$20.000</p>
+        <button onclick="agregarAlCarrito('Combo Amor Doble 💕 - $20.000')" class="bg-green-500 hover:bg-green-600 text-white mt-4 py-2 px-6 rounded-full shadow transition">Agregar al pedido 🛒</button>
+      </div>
+      <!-- Combo Fiesta Frutal -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition hover:shadow-xl">
+        <img src="combo2.jpg" alt="Combo Fiesta Frutal" class="w-full h-64 object-contain rounded-lg mb-4 hover-zoom">
+        <h2 class="text-pink-600 font-bold text-xl">Combo Rapsodia Frutal  🎉</h2>
+        <p class="text-sm text-gray-600 mt-2">2 fresas grandes + 2 cremas surtidas +3 frambuesas + queso rallado + galleta de vainilla + dulce de leche suave atopado.”</p>
+        <p class="text-pink-700 font-bold mt-2 text-lg">$30.000</p>
+        <button onclick="agregarAlCarrito('Combo Fiesta Frutal 🎉 - $30.000')" class="bg-green-500 hover:bg-green-600 text-white mt-4 py-2 px-6 rounded-full shadow transition">Agregar al pedido 🛒</button>
+      </div>
+      <!-- Combo Kids Berry -->
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transition hover:shadow-xl">
+        <img src="combo 3.png" alt="Combo Kids Berry" class="w-full h-64 object-contain rounded-lg mb-4 hover-zoom">
+        <h2 class="text-pink-600 font-bold text-xl">Combo Kids Berry 🧸</h2>
+        <p class="text-sm text-gray-600 mt-2">1 fresa mediana + crema chantilly + masmelos y chips de colores + vaso decorado con stickers</p>
+        <p class="text-pink-700 font-bold mt-2 text-lg">$12.000</p>
+        <button onclick="agregarAlCarrito('Combo Kids Berry 🧸 - $12.000')" class="bg-green-500 hover:bg-green-600 text-white mt-4 py-2 px-6 rounded-full shadow transition">Agregar al pedido 🛒</button>
+      </div>
+    </div>
+
+    <!-- Botones ver y enviar pedido -->
+    <div class="text-center mt-6">
+      <button onclick="verPedido()" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-bold py-2 px-6 rounded-full shadow">Ver pedido actual 🧾</button>
+    </div>
+    <div class="text-center mt-4">
+      <button onclick="enviarPedido()" class="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">Enviar pedido por WhatsApp 📲</button>
+    </div>
+  </main>
+
+  <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+    <p>© 2025 Deliberry. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function agregarAlCarrito(producto) {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      carrito.push(producto);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      alert("Producto agregado al pedido 🍓");
+    }
+    function verPedido() {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      if (!carrito.length) return alert("Tu pedido está vacío 🛒");
+      alert("🧾 Tu pedido actual:\n\n" + carrito.join('\n'));
+    }
+    function enviarPedido() {
+      const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      if (!carrito.length) return alert("Tu pedido está vacío");
+      const mensaje = `Hola 👋, quiero hacer el siguiente pedido:\n\n${carrito.join('\n')}`;
+      const numero = '573144855583';
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+      localStorage.removeItem('carrito');
+    }
+    // Al final de enviarPedido():
+const historial = JSON.parse(localStorage.getItem('historialPedidos')) || [];
+historial.push(mensaje);  // 'mensaje' es el texto que vas a enviar por WhatsApp
+localStorage.setItem('historialPedidos', JSON.stringify(historial));
+
+  </script>
+</body>
+</html>
